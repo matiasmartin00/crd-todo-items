@@ -1,2 +1,16 @@
 resources:
 - manager.yaml
+patches:
+- patch: |-
+    - op: add
+      path: /spec/template/spec/imagePullSecrets
+      value:
+        - name: ghcr-secret
+  target:
+    kind: Deployment
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+- name: controller
+  newName: ghcr.io/matiasmartin00/crd-todo-items
+  newTag: 1.0.0

@@ -1,8 +1,11 @@
 # crd-todo-items
-// TODO(user): Add simple overview of use/purpose
+It is a sample Kubernetes controller that manages a custom resource definition (CRD) called "TodoItem". The controller allows users to create, read, update, and delete TodoItem resources in a Kubernetes cluster.
 
 ## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+The TodoItem CRD represents a simple to-do item with the following fields:
+- Title: A string representing the title of the to-do item.
+- Description: A string providing a detailed description of the to-do item.
+- Completed: A boolean indicating whether the to-do item has been completed.
 
 ## Getting Started
 
@@ -16,7 +19,7 @@
 **Build and push your image to the location specified by `IMG`:**
 
 ```sh
-make docker-build docker-push IMG=<some-registry>/crd-todo-items:tag
+make docker-build docker-push IMG=ghcr.io/matiasmartin00/crd-todo-items:1.0.0
 ```
 
 **NOTE:** This image ought to be published in the personal registry you specified.
@@ -32,7 +35,7 @@ make install
 **Deploy the Manager to the cluster with the image specified by `IMG`:**
 
 ```sh
-make deploy IMG=<some-registry>/crd-todo-items:tag
+make deploy IMG=ghcr.io/matiasmartin00/crd-todo-items:1.0.0
 ```
 
 > **NOTE**: If you encounter RBAC errors, you may need to grant yourself cluster-admin
@@ -75,7 +78,7 @@ Following the options to release and provide this solution to the users.
 1. Build the installer for the image built and published in the registry:
 
 ```sh
-make build-installer IMG=<some-registry>/crd-todo-items:tag
+make build-installer IMG=ghcr.io/matiasmartin00/crd-todo-items:1.0.0
 ```
 
 **NOTE:** The makefile target mentioned above generates an 'install.yaml'
@@ -89,7 +92,7 @@ Users can just run 'kubectl apply -f <URL for YAML BUNDLE>' to install
 the project, i.e.:
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/<org>/crd-todo-items/<tag or branch>/dist/install.yaml
+kubectl apply -f https://raw.githubusercontent.com/matiasmartin00/crd-todo-items/main/dist/install.yaml
 ```
 
 ### By providing a Helm Chart
@@ -111,7 +114,9 @@ previously added to 'dist/chart/values.yaml' or 'dist/chart/manager/manager.yaml
 is manually re-applied afterwards.
 
 ## Contributing
-// TODO(user): Add detailed information on how you would like others to contribute to this project
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
 **NOTE:** Run `make help` for more information on all potential `make` targets
 
