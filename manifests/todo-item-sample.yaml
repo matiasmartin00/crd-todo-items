@@ -1,0 +1,8 @@
+apiVersion: matiasmartin00.com/v1
+kind: TodoItem
+metadata:
+  name: sample-todo-item
+spec:
+  title: "Sample Todo Item"
+  description: "This is a sample todo item created for demonstration purposes."
+  completed: false
