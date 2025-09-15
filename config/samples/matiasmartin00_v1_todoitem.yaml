@@ -1,0 +1,11 @@
+apiVersion: matiasmartin00.matiasmartin00.com/v1
+kind: TodoItem
+metadata:
+  labels:
+    app.kubernetes.io/name: crd-todo-items
+    app.kubernetes.io/managed-by: kustomize
+  name: todoitem-sample
+spec:
+  title: "Sample Todo Item"
+  description: "This is a sample todo item created for demonstration purposes."
+  completed: false

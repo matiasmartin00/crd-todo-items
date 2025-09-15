@@ -1,0 +1,27 @@
+# This rule is not used by the project crd-todo-items itself.
+# It is provided to allow the cluster admin to help manage permissions for users.
+#
+# Grants full permissions ('*') over matiasmartin00.matiasmartin00.com.
+# This role is intended for users authorized to modify roles and bindings within the cluster,
+# enabling them to delegate specific permissions to other users or groups as needed.
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: crd-todo-items
+    app.kubernetes.io/managed-by: kustomize
+  name: todoitem-admin-role
+rules:
+- apiGroups:
+  - matiasmartin00.matiasmartin00.com
+  resources:
+  - todoitems
+  verbs:
+  - '*'
+- apiGroups:
+  - matiasmartin00.matiasmartin00.com
+  resources:
+  - todoitems/status
+  verbs:
+  - get
