@@ -49,7 +49,22 @@ type TodoItemReconciler struct {
 func (r *TodoItemReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = logf.FromContext(ctx)
 
-	// TODO(user): your logic here
+	logf.Log.Info("Reconcile called for TodoItem", "NamespacedName", req.NamespacedName)
+	logf.Log.Info("Name of the TodoItem", "Name", req.Name)
+	logf.Log.Info("Namespace of the TodoItem", "Namespace", req.Namespace)
+
+	var todo matiasmartin00v1.TodoItem
+	if err := r.Get(ctx, req.NamespacedName, &todo); err != nil {
+		// The TodoItem resource may have been deleted after the reconcile request.
+		// Return and don't requeue
+		logf.Log.Error(err, "unable to fetch TodoItem")
+		return ctrl.Result{}, client.IgnoreNotFound(err)
+	}
+
+	todo.Spec.Completed = false
+	logf.Log.Info("Reconciled TodoItem", "Spec", todo.Spec)
+	logf.Log.Info("Reconciled TodoItem", "Status", todo.Status)
+	logf.Log.Info("Generation", "Generation", todo.Generation)
 
 	return ctrl.Result{}, nil
 }

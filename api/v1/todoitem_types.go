@@ -32,7 +32,11 @@ type TodoItemSpec struct {
 
 	// foo is an example field of TodoItem. Edit todoitem_types.go to remove/update
 	// +optional
-	Foo *string `json:"foo,omitempty"`
+	Title string `json:"title,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty"`
+	// +optional
+	Completed bool `json:"completed,omitempty"`
 }
 
 // TodoItemStatus defines the observed state of TodoItem.

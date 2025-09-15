@@ -6,6 +6,6 @@ metadata:
     app.kubernetes.io/managed-by: kustomize
   name: todoitem-sample
 spec:
-  title: "Sample Todo Item"
+  title: "Sample Todo Item Edit"
   description: "This is a sample todo item created for demonstration purposes."
   completed: false
